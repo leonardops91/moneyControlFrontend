@@ -1,4 +1,4 @@
-import { Flex, Stack } from "@chakra-ui/react";
+import { Flex, Stack, useDisclosure } from "@chakra-ui/react";
 import { Header } from "../../components/header";
 import { Card } from "../../components/card";
 import { Up } from "../../assets/up";
@@ -6,11 +6,14 @@ import { Down } from "../../assets/down";
 import { Cifrao } from "../../assets/cifrao";
 import { SearchBox } from "../../components/search-box";
 import { TransactionCard } from "../../components/transaction-card";
+import { TransactionModal } from "../../components/transaction-modal";
 
 export function Transactions() {
+  const { isOpen, onClose, onOpen } = useDisclosure()
+
   return (
     <Flex direction={"column"}>
-      <Header />
+      <Header openModal={onOpen}/>
       <Flex gap={8} pb={16}>
         <Card title={"Entradas"} icon={Up} value={"17400"} />
         <Card title={"Saídas"} icon={Down} value={"1259"} />
@@ -22,6 +25,7 @@ export function Transactions() {
         <TransactionCard title={"Hamburguer"} price={12000} type='outcome' category="Alimentação" date={"13/14/2022"} />
         <TransactionCard title={"Aluguel de apartamento"} price={1200} type='outcome' category="Casa" date={"13/14/2022"} />
       </Stack>
+      <TransactionModal isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 }

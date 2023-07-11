@@ -1,5 +1,5 @@
 
-import { extendTheme } from '@chakra-ui/react'
+import { Flex, extendTheme } from '@chakra-ui/react'
 
 export const theme = extendTheme({
   colors: {
@@ -7,6 +7,8 @@ export const theme = extendTheme({
     secondary: '#323238',
     textPrimary: '#718096',
     textSecondary: '#E9D8FD',
+    textSuccess: '#05a274',
+    textDanger: '#f75a68',
     success: '#015f43',
     danger: '#763b44',
     black: '#121214'
@@ -20,9 +22,7 @@ export const theme = extendTheme({
         body: {
             bg: 'gray.800',
             color: 'textPrimary',
-            width: '100%',
-            maxWidth: '1120px',
-            margin: '0 auto',
+            _before:{content: '""', bg:'blackAlpha.500', position: 'absolute', h: '212px', w: '100vw'},
         },
     },
   }
