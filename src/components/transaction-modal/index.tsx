@@ -9,7 +9,8 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Input } from "../input";
-import { TransactionTypeToggle } from "../transactionTypeToggle";
+import { TransactionTypeSelector } from "../transactionTypeSelector";
+
 
 interface TransactionCardProps {
   isOpen: boolean;
@@ -30,7 +31,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionCardProps) {
             <Input placeholder='Descrição' />
             <Input placeholder='Preço' />
             <Input placeholder='Categoria' />
-            <TransactionTypeToggle />
+            <TransactionTypeSelector />
           </FormControl>
         </ModalBody>
       </ModalContent>

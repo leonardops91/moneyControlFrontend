@@ -3,7 +3,7 @@ import { Transactions } from "./pages/transactions";
 
 export function App() {
   return (
-    <Flex w='100%' maxWidth='1120px' margin='0 auto'>
+    <Flex w='90%' maxWidth='1232px' margin='0 auto'>
       <Transactions />
     </Flex>
   );
