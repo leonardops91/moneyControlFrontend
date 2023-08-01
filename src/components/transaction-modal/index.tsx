@@ -7,6 +7,7 @@ import {
   ModalCloseButton,
   FormControl,
   Stack,
+  Button,
 } from "@chakra-ui/react";
 import { Input } from "../input";
 import { TransactionTypeSelector } from "../transactionTypeSelector";
@@ -22,7 +23,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionCardProps) {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent px='48px' pb={10} w='535px' bg='secondary'>
-        <ModalHeader p='0' my={8} color='textSecondary'>
+        <ModalHeader p='0' my={8} color='purple.50'>
           Nova Transação
         </ModalHeader>
         <ModalCloseButton color='textSecondary' />
@@ -32,6 +33,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionCardProps) {
             <Input placeholder='Preço' />
             <Input placeholder='Categoria' />
             <TransactionTypeSelector />
+            <Button bg='purple.900' color='purple.50' py={7} _hover={{bg: 'purple.800'}}>Cadastrar</Button>
           </FormControl>
         </ModalBody>
       </ModalContent>

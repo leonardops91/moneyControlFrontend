@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   Icon,
-  Stack,
   Text,
 } from "@chakra-ui/react";
 
@@ -37,7 +36,7 @@ export function Card({ title, icon, value, color = "secondary" }: CardProps) {
         <Text>{title}</Text>
         <Icon as={icon} />
       </Flex>
-      <Heading w='100%' color='textSecondary' fontSize='3xl'>
+      <Heading w='100%' color='purple.50' fontSize='3xl'>
         R${value}
       </Heading>
     </Button>

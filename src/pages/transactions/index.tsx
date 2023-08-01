@@ -1,4 +1,4 @@
-import { Flex, Stack, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, Stack, useDisclosure } from "@chakra-ui/react";
 import { Header } from "../../components/header";
 import { Card } from "../../components/card";
 import { Up } from "../../assets/up";
@@ -12,13 +12,17 @@ export function Transactions() {
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
-    <Flex direction={"column"} margin='auto' width='90%'>
+    <Flex direction={"column"} margin='auto' width='90%' >
       <Header openModal={onOpen} />
-      <Flex gap={8} pb={16} align='center' direction={['column', 'row']}>
+      <Box overflow='auto' css={{'&::-webkit-scrollbar': {
+      display: 'none',
+    },}}>
+      <Flex gap={8} pb={16} w='100%' minW='fit-content' align='center' direction={'row'} >
         <Card title={"Entradas"} icon={Up} value={"17400"} />
         <Card title={"Saídas"} icon={Down} value={"1259"} />
         <Card title={"Total"} icon={Cifrao} value={"16141"} color='success' />
       </Flex>
+      </Box>
       <SearchBox />
       <Stack spacing={2}>
         <TransactionCard
