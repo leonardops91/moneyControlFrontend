@@ -13,9 +13,10 @@ interface CardProps {
   icon: As;
   value: string;
   color?: string;
+  onClick: () => void;
 }
 
-export function Card({ title, icon, value, color = "secondary" }: CardProps) {
+export function Card({ title, icon, value, color = "secondary", onClick }: CardProps) {
   return (
     <Button
       as={Center}
@@ -31,13 +32,14 @@ export function Card({ title, icon, value, color = "secondary" }: CardProps) {
       _hover={{filter: 'brightness(1.1)'}}
       _active={{filter: 'brightness(0.9)'}}
       cursor='pointer'
+      onClick={onClick}
     >
       <Flex w='100%' justify='space-between'>
         <Text>{title}</Text>
         <Icon as={icon} />
       </Flex>
       <Heading w='100%' color='purple.50' fontSize='3xl'>
-        R${value}
+        R$ {value}
       </Heading>
     </Button>
   );

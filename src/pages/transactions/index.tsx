@@ -7,45 +7,42 @@ import { Cifrao } from "../../assets/cifrao";
 import { SearchBox } from "../../components/search-box";
 import { TransactionCard } from "../../components/transaction-card";
 import { TransactionModal } from "../../components/transaction-modal";
+import { TransactionType, useTransactions } from "../../contexts/transactionContext";
+import { useState } from "react";
+import { Summary, formatValue } from "./summary";
 
 export function Transactions() {
   const { isOpen, onClose, onOpen } = useDisclosure();
 
+  const [transactionsToDisplay, setTransactionsToDisplay] = useState<TransactionType[]>()
+
+
   return (
-    <Flex direction={"column"} margin='auto' width='90%' >
+    <Flex direction={"column"} margin='auto' width='90%'>
       <Header openModal={onOpen} />
-      <Box overflow='auto' css={{'&::-webkit-scrollbar': {
-      display: 'none',
-    },}}>
-      <Flex gap={8} pb={16} w='100%' minW='fit-content' align='center' direction={'row'} >
-        <Card title={"Entradas"} icon={Up} value={"17400"} />
-        <Card title={"Saídas"} icon={Down} value={"1259"} />
-        <Card title={"Total"} icon={Cifrao} value={"16141"} color='success' />
-      </Flex>
+      <Box
+        overflow='auto'
+        css={{
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+      >
+        <Summary setTransactionsToDisplay={setTransactionsToDisplay}/>
       </Box>
       <SearchBox />
       <Stack spacing={2}>
-        <TransactionCard
-          title={"Desenvolvimento de site"}
-          price={12000}
-          type='income'
-          category='Venda'
-          date={"13/14/2022"}
-        />
-        <TransactionCard
-          title={"Hamburguer"}
-          price={12000}
-          type='outcome'
-          category='Alimentação'
-          date={"13/14/2022"}
-        />
-        <TransactionCard
-          title={"Aluguel de apartamento"}
-          price={1200}
-          type='outcome'
-          category='Casa'
-          date={"13/14/2022"}
-        />
+        {transactionsToDisplay?.map((transaction) => {
+          return (
+            <TransactionCard
+              title={transaction.description}
+              price={formatValue(Number(transaction.price))}
+              type={transaction.type}
+              date={transaction.createdAt}
+              category={transaction.category}
+            />
+          );
+        })}
       </Stack>
       <TransactionModal isOpen={isOpen} onClose={onClose} />
     </Flex>
