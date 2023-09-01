@@ -39,7 +39,7 @@ export function Card({ title, icon, value, color = "secondary", onClick }: CardP
         <Icon as={icon} />
       </Flex>
       <Heading w='100%' color='purple.50' fontSize='3xl'>
-        R$ {value}
+        {value}
       </Heading>
     </Button>
   );

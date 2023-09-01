@@ -5,13 +5,7 @@ import { Up } from "../../assets/up";
 import { TransactionType, useTransactions } from "../../contexts/transactionContext";
 import { Card } from "../../components/card";
 import { Dispatch, SetStateAction } from "react";
-
-export function formatValue(value: number) {
-    return value.toLocaleString("pt-BR", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    })
-}
+import { priceFormatter } from "../../utils/formatter";
 
 interface SummaryProps {
     setTransactionsToDisplay: Dispatch<SetStateAction<TransactionType[] | undefined>>;
@@ -36,13 +30,13 @@ export function Summary({setTransactionsToDisplay}: SummaryProps) {
         gap={8}
         pb={16}
         w='100%'
-        minW='fit-content'
+        // minW='fit-content'
         align='center'
         direction={"row"}
       >
-        <Card onClick={ () => setTransactionsToDisplay(incomes)} title={"Entradas"} icon={Up} value={formatValue(incomesSum)} />
-        <Card onClick={ () => setTransactionsToDisplay(outcomes)} title={"Saídas"} icon={Down} value={formatValue(outcomesSum)} />
-        <Card onClick={ () => setTransactionsToDisplay(transactions)} title={"Total"} icon={Cifrao} value={formatValue(total)} color='success' />
+        <Card onClick={ () => setTransactionsToDisplay(incomes)} title={"Entradas"} icon={Up} value={priceFormatter.format(incomesSum)} />
+        <Card onClick={ () => setTransactionsToDisplay(outcomes)} title={"Saídas"} icon={Down} value={priceFormatter.format(outcomesSum)} />
+        <Card onClick={ () => setTransactionsToDisplay(transactions)} title={"Total"} icon={Cifrao} value={priceFormatter.format(total)} color='success' />
       </Flex>
     )
 }

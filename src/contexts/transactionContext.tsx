@@ -7,7 +7,7 @@ export type TransactionType = {
     type: "income" | "outcome",
     category: TransactionCategory,
     price: number,
-    createdAt: string
+    createdAt: Date
   }
 
 interface TransactionContextType {

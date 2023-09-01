@@ -33,7 +33,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionCardProps) {
             <Input placeholder='Preço' />
             <Input placeholder='Categoria' />
             <TransactionTypeSelector />
-            <Button bg='purple.900' color='purple.50' py={7} _hover={{bg: 'purple.800'}}>Cadastrar</Button>
+            <Button bg='purple.800' color='purple.50' fontSize='xl' py={7} _hover={{bg: 'purple.900'}}>Cadastrar</Button>
           </FormControl>
         </ModalBody>
       </ModalContent>

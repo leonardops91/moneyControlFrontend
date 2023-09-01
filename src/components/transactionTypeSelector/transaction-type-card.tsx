@@ -20,7 +20,7 @@ export function TransactionTypeCard({
       py={4}
       px={6}
       borderRadius={5}
-      bg={choosen === name ? "purple.900" : "gray.900"}
+      bg={choosen === name ? "purple.800" : "blackAlpha.700"}
       color={choosen === name ? "purple.50" : "textPrimary"}
       htmlFor={name}
       cursor='pointer'

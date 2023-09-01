@@ -20,7 +20,7 @@ export function TransactionCard({ title, price, category, date, type }: Transact
   return (
     <Flex w='100%' bg='secondary' px={8} py={5} borderRadius={5}>
       <Text flex={4}>{title}</Text>
-      <Text color={type === 'income' ? 'textSuccess' : 'textDanger'} w={200}>R$ {price}</Text>
+      <Text color={type === 'income' ? 'textSuccess' : 'textDanger'} w={200}>{price}</Text>
       <Text w={200}>{category}</Text>
       <Text >{date}</Text>
     </Flex>

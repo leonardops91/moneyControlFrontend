@@ -1,22 +1,22 @@
 import { Box, Flex, Stack, useDisclosure } from "@chakra-ui/react";
 import { Header } from "../../components/header";
-import { Card } from "../../components/card";
-import { Up } from "../../assets/up";
-import { Down } from "../../assets/down";
-import { Cifrao } from "../../assets/cifrao";
 import { SearchBox } from "../../components/search-box";
 import { TransactionCard } from "../../components/transaction-card";
 import { TransactionModal } from "../../components/transaction-modal";
 import { TransactionType, useTransactions } from "../../contexts/transactionContext";
-import { useState } from "react";
-import { Summary, formatValue } from "./summary";
+import { useEffect, useState } from "react";
+import { Summary } from "./summary";
+import { dateFormatter, priceFormatter } from "../../utils/formatter";
 
 export function Transactions() {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const { transactions } = useTransactions()
 
   const [transactionsToDisplay, setTransactionsToDisplay] = useState<TransactionType[]>()
 
-
+  useEffect(() => {
+    setTransactionsToDisplay(transactions)
+  }, [transactions])
   return (
     <Flex direction={"column"} margin='auto' width='90%'>
       <Header openModal={onOpen} />
@@ -36,9 +36,9 @@ export function Transactions() {
           return (
             <TransactionCard
               title={transaction.description}
-              price={formatValue(Number(transaction.price))}
+              price={priceFormatter.format(transaction.price)}
               type={transaction.type}
-              date={transaction.createdAt}
+              date={dateFormatter.format(new Date(transaction.createdAt))}
               category={transaction.category}
             />
           );
